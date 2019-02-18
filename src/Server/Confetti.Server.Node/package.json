@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "build": "webpack --progress --colors",
-    "start": "node server.js"
+    "start": "node server.js",
+    "ssr": "cd ../../Client && npm run ssr"
   },
   "private": true,
   "dependencies": {

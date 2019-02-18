@@ -8,7 +8,10 @@
     "lint": "ng lint",
     "test": "cd ../../tests/Client && ng test",
     "e2e": "cd ../../tests/Client && ng e2e",
-    "build:universal": "ng run Client:build:production && ng run Client:server:production"
+    "ssr": "npm run build:universal && npm run start:ssr",
+    "build:universal": "ng run Client:build:production && ng run Client:server:production && npm run build:ssr",
+    "build:ssr": "cd ../Server/Confetti.Server.Node && npm run build",
+    "start:ssr": "cd ../Server/Confetti.Server.Node && npm run start"
   },
   "private": true,
   "dependencies": {
