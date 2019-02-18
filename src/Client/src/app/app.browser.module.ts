@@ -16,14 +16,17 @@ export function getRequest(): any {
   imports: [
     AppModule,
     BrowserTransferStateModule
-    ],
-  providers: [{
+  ],
+  providers: [
+    {
     // The server provides these in main.server
       provide: REQUEST,
       useFactory: getRequest,
-    }, {
+    },
+    {
       provide: 'ORIGIN_URL',
       useValue: location.origin
-  }]
+    }
+  ]
 })
 export class AppBrowserModule {}

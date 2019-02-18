@@ -18,6 +18,7 @@
     "@nguniversal/common": "^7.1.0",
     "@nguniversal/express-engine": "^7.1.0",
     "@nguniversal/module-map-ngfactory-loader": "^7.1.0",
+    "@ngx-meta/core": "^7.0.0",
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.4",
     "domino": "^2.1.2",

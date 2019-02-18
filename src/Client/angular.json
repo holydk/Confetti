@@ -67,10 +67,10 @@
           },
           "configurations": {
             "dev": {
-              "browserTarget": "universal-demo:build:dev"
+              "browserTarget": "Client:build:dev"
             },
             "production": {
-              "browserTarget": "universal-demo:build:production"
+              "browserTarget": "Client:build:production"
             }
           }
         },

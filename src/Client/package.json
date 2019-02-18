@@ -24,6 +24,7 @@
     "@nguniversal/common": "^7.1.0",
     "@nguniversal/express-engine": "^7.1.0",
     "@nguniversal/module-map-ngfactory-loader": "^7.1.0",
+    "@ngx-meta/core": "^7.0.0",
     "core-js": "^2.6.5",
     "ngx-cookie": "^4.1.2",
     "rxjs": "^6.4.0",

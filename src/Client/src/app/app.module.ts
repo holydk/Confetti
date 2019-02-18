@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from '@shared/shared.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { UniversalStorage } from '@shared/storage/universal.storage';
 
@@ -15,17 +16,17 @@ import { CookieService, CookieModule } from 'ngx-cookie';
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'app' }),
+    BrowserModule.withServerTransition({ appId: 'my-app' }),
     TransferHttpCacheModule,
     HttpClientModule,
-    AppRoutingModule,
+    RouterModule,
+    AppRoutes,
     CookieModule.forRoot(),
     SharedModule.forRoot()
   ],
   providers: [
     CookieService,
     UniversalStorage,
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
-export class AppModule { }
+export class AppModule {}
