@@ -1,1 +1,1 @@
-web: npm run heroku:prod:ssr
+web: npm run start:ssr

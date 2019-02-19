@@ -16,7 +16,7 @@
     "start:ssr": "cd src/Server/Confetti.Server.Node && node server.js",
     "build:web-api": "cd src/Server/Confetti.Server && dotnet build",
     "start:web-api:dev": "cd src/Server/Confetti.Server && dotnet run",
-    "heroku:prod:ssr": "npm i && npm run ssr" 
+    "heroku:prod:ssr": "npm i && npm run ssr"
   },
   "private": true,
   "dependencies": {
