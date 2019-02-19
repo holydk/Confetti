@@ -1,1 +1,1 @@
-web: npm run start:ssr
+web: cd $HOME/heroku_output && ./Confetti && npm run ssr
