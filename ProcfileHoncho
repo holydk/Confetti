@@ -1,2 +1,2 @@
-dotnetcore: npm run build:web-api && start:web-api:dev
+dotnetcore: npm run build:web-api && npm run start:web-api:dev
 node: npm run ssr
