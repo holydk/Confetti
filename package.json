@@ -2,7 +2,9 @@
   "name": "client",
   "version": "0.0.0",
   "scripts": {
+    "nf": "nf",
     "ng": "ng",
+    "nf:start": "nf -f ProcfileHoncho start",
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint",
@@ -30,16 +32,17 @@
     "@nguniversal/express-engine": "^7.1.0",
     "@nguniversal/module-map-ngfactory-loader": "^7.1.0",
     "@ngx-meta/core": "^7.0.0",
-    "core-js": "^2.6.5",
-    "ngx-cookie": "^4.1.2",
-    "rxjs": "^6.4.0",
-    "tslib": "^1.9.0",
-    "zone.js": "^0.8.26",
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.4",
+    "core-js": "^2.6.5",
     "domino": "^2.1.2",
     "express": "^4.16.4",
-    "reflect-metadata": "^0.1.13"
+    "foreman": "^3.0.1",
+    "ngx-cookie": "^4.1.2",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.4.0",
+    "tslib": "^1.9.0",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.2",
