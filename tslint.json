@@ -71,6 +71,8 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "variable-name": false
+    "variable-name": false,
+    "no-string-literal": false,
+    "object-literal-shorthand": false
   }
 }

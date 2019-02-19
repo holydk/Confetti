@@ -38,10 +38,10 @@ namespace Confetti.Server
 
             app.UseCors(policy =>
             {
-                policy.WithOrigins(
-                    "http://localhost:4000", 
-                    "http://localhost:4200");
-
+                // policy.WithOrigins(
+                //     "http://localhost:4000", 
+                //     "http://localhost:4200");
+                policy.AllowAnyOrigin();
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
                 policy.WithExposedHeaders("WWW-Authenticate");

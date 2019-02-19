@@ -8,6 +8,9 @@ nupkg/
 # Visual Studio Code
 .vscode
 
+# dependencies
+/node_modules
+
 # User-specific files
 *.suo
 *.user

@@ -2,10 +2,7 @@
     "extends": "../tsconfig.json",
     "compilerOptions": {
       "baseUrl": "./",
-      "outDir": "../out-tsc/app",
-      "types": [
-          "node"
-        ]
+      "outDir": "../out-tsc/app"
     },
     "exclude": [
       "node_modules"
