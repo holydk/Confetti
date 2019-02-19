@@ -4,7 +4,7 @@
   "scripts": {
     "nf": "nf",
     "ng": "ng",
-    "nf:start": "nf -f ProcfileHoncho start",
+    "nf:start": "nf start",
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint",

@@ -1,1 +1,1 @@
-web: nf -f ProcfileHoncho start
+web: $WEB
