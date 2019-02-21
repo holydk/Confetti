@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Confetti.Server.Controllers
+namespace Confetti.Api.Controllers
 {
     public class ToDoItem
     {

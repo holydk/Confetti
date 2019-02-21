@@ -5,7 +5,7 @@
   },
   "files": [
     "test.ts",
-    "../../../src/Client/src/polyfills.ts"
+    "../../src/polyfills.ts"
   ],
   "include": [
     "**/*.spec.ts",

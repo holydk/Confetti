@@ -9,7 +9,7 @@ module.exports = {
   externals: [/(node_modules|main\..*\.js)/],
   entry: {
     // This is our Express server for Dynamic universal
-    server: './src/server.ts'
+    server: './server.ts'
   },
   resolve: { extensions: [".js", ".ts"] },
   output: {

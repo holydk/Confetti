@@ -3,17 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run ssr",
     "build": "ng build",
     "lint": "ng lint",
     "test": "ng test",
     "e2e": "ng e2e",
     "ssr": "npm run build:universal && npm run start:ssr",
     "build:universal": "ng run Client:build:production && ng run Client:server:production && npm run build:ssr",
-    "build:ssr": "cd src/Server/Confetti.Server.Node && webpack --progress --colors",
-    "start:ssr": "cd src/Server/Confetti.Server.Node && node server.js",
-    "build:web-api": "cd src/Server/Confetti.Server && dotnet build",
-    "start:web-api:dev": "cd src/Server/Confetti.Server && dotnet run"
+    "build:ssr": "webpack --progress --colors",
+    "start:ssr": "node server.js"
   },
   "private": true,
   "dependencies": {
