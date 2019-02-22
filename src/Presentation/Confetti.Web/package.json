@@ -11,7 +11,7 @@
     "ssr": "npm run build:universal && npm run start:ssr",
     "build:universal": "ng run Client:build:production && ng run Client:server:production && npm run build:ssr",
     "build:ssr": "webpack --progress --colors",
-    "start:ssr": "node server.js"
+    "start:ssr": "cd ./bin && node server.js"
   },
   "private": true,
   "dependencies": {

@@ -3,6 +3,7 @@
 /out-tsc
 /dist
 /dist-server
+/bin
 server.js
 
 # IDE - VSCode
