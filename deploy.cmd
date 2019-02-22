@@ -47,6 +47,20 @@ IF NOT DEFINED KUDU_SYNC_CMD (
   :: Locally just running "kuduSync" would also work
   SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 )
+
+IF NOT DEFINED DEPLOYMENT_TEMP (
+  SET DEPLOYMENT_TEMP=%temp%\___deployTemp%random%
+  SET CLEAN_LOCAL_DEPLOYMENT_TEMP=true
+)
+
+IF DEFINED CLEAN_LOCAL_DEPLOYMENT_TEMP (
+  IF EXIST "%DEPLOYMENT_TEMP%" rd /s /q "%DEPLOYMENT_TEMP%"
+  mkdir "%DEPLOYMENT_TEMP%"
+)
+
+IF DEFINED MSBUILD_PATH goto Deployment
+SET MSBUILD_PATH=%ProgramFiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe
+
 goto Deployment
 
 :: Utility Functions
@@ -86,6 +100,24 @@ goto :EOF
 :: ----------
 
 :Deployment
+
+echo Handling ASP.NET Core Web Application deployment.
+
+:: 1. Restore nuget packages
+echo Restore dotnet packages...
+call :ExecuteCmd dotnet restore "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Api\Confetti.Api.csproj"
+IF !ERRORLEVEL! NEQ 0 goto error
+
+:: 2. Build and publish
+echo Dotnet publish...
+call :ExecuteCmd dotnet publish "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Api\Confetti.Api.csproj" --output "%DEPLOYMENT_TEMP%" --configuration Release
+IF !ERRORLEVEL! NEQ 0 goto error
+
+:: 3. KuduSync for ASP .NET Core project
+echo Copying ASP .NET Core Web Api project...
+call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%\api" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+IF !ERRORLEVEL! NEQ 0 goto error
+
 echo Handling node.js deployment.
 
 :: 1. Select node version
@@ -103,12 +135,14 @@ IF EXIST "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\package.json" (
   popd
 )
 
-:: 4. KuduSync
+:: 4. KuduSync for Node project
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  echo Copying Node project...
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\bin" -t "%DEPLOYMENT_TARGET%\web" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 
   :: 5. copy web.config in deployment directory
+  echo Copying Node web.config...
   xcopy "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\web.config" "%DEPLOYMENT_TARGET%\web" /Y
   IF !ERRORLEVEL! NEQ 0 goto error
 )
