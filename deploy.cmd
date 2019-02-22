@@ -88,27 +88,29 @@ goto :EOF
 :Deployment
 echo Handling node.js deployment.
 
-:: 1. KuduSync
+:: 1. Select node version
+call :SelectNodeVersion
+IF EXIST "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\package.json" (
+  pushd "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web"
+  :: 2. Install npm packages
+  echo Install node packages...
+  call :ExecuteCmd !NPM_CMD! install
+  IF !ERRORLEVEL! NEQ 0 goto error
+  :: 3. Build
+  echo Build app...
+  call :ExecuteCmd !NPM_CMD! run build:universal
+  IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+)
+
+:: 4. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\bin" -t "%DEPLOYMENT_TARGET%\web" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 
-  :: 2. copy web.config in deployment directory
+  :: 5. copy web.config in deployment directory
   xcopy "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\web.config" "%DEPLOYMENT_TARGET%\web" /Y
   IF !ERRORLEVEL! NEQ 0 goto error
-)
-
-:: 3. Select node version
-call :SelectNodeVersion
-IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
-  pushd "%DEPLOYMENT_TARGET%"
-  :: 4. Install npm packages
-  call :ExecuteCmd !NPM_CMD! install --production
-  IF !ERRORLEVEL! NEQ 0 goto error
-  :: 5. Build
-  call :ExecuteCmd !NPM_CMD! run build:universal
-  IF !ERRORLEVEL! NEQ 0 goto error
-  popd
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -123,6 +125,7 @@ if "%ERRORLEVEL%" NEQ "0" echo Failed exitCode=%ERRORLEVEL%, command=%_CMD_%
 exit /b %ERRORLEVEL%
 
 :error
+pause
 endlocal
 echo An error has occurred during web site deployment.
 call :exitSetErrorLevel
