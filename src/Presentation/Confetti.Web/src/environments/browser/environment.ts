@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   isServer: false,
+  apiUrl: 'http://localhost:5000',
   // for prerender
   host: 'http://localhost:4000',
 };

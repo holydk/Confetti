@@ -9,7 +9,9 @@
     "test": "ng test",
     "e2e": "ng e2e",
     "ssr": "npm run build:universal && npm run start:ssr",
+    "ssr:dev": "npm run build:universal:dev && npm run start:ssr",
     "build:universal": "ng run Client:build:production && ng run Client:server:production && npm run build:ssr",
+    "build:universal:dev": "ng run Client:build:dev && ng run Client:server:dev && npm run build:ssr",
     "build:ssr": "webpack --progress --colors",
     "start:ssr": "cd ./bin && node server.js"
   },

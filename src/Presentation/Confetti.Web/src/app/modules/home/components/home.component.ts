@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Component({
     selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.http.get('http://localhost:5000/api/todo').subscribe((result) => {
+        this.http.get(`${environment.apiUrl}/todo`).subscribe((result) => {
             this.resultHttpClient = result;
         });
     }

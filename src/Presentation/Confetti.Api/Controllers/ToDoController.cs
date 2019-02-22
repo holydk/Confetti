@@ -15,7 +15,7 @@ namespace Confetti.Api.Controllers
     public class ToDoController : Controller
     {
         [HttpGet]
-        [Route("/api/todo")]
+        [Route("/todo")]
         public ToDoItem[] GetAllToDoItems()
         {
             return new []
