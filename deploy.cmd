@@ -137,11 +137,15 @@ IF EXIST "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\package.json" (
 
 :: 4. KuduSync for Node project
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  :: 5. remove web folder, output files has hash in filename
+  echo Removing "%DEPLOYMENT_TARGET%\web" folder...
+  rmdir "%DEPLOYMENT_TARGET%\web" /s /q
+
   echo Copying Node project...
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\bin" -t "%DEPLOYMENT_TARGET%\web" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 
-  :: 5. copy web.config in deployment directory
+  :: 6. copy web.config in deployment directory
   echo Copying Node web.config...
   xcopy "%DEPLOYMENT_SOURCE%\src\Presentation\Confetti.Web\web.config" "%DEPLOYMENT_TARGET%\web" /Y
   IF !ERRORLEVEL! NEQ 0 goto error
