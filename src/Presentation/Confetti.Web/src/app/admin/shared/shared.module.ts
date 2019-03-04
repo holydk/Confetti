@@ -1,7 +1,11 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
+import { LayoutsModule } from './layouts/layouts.module';
+
 @NgModule({
-  exports: [],
+  exports: [
+    LayoutsModule
+  ],
   providers: [],
 })
 export class SharedModule {

@@ -14,6 +14,18 @@
     "paths": {
       "@shared/*": [
         "app/shared/*"
+      ],
+      "@user/shared/*": [
+        "app/user/shared/*"
+      ],
+      "@admin/shared/*": [
+        "app/admin/shared/*"
+      ],
+      "@env/*": [
+        "environments/*"
+      ],
+      "@app/*": [
+        "app/*"
       ]
     },
     "types": [

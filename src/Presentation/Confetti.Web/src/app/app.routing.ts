@@ -1,27 +1,14 @@
 import { Routes, RouterModule } from '@angular/router';
 // import { MetaGuard } from '@ngx-meta/core';
 
-import { WrapperComponent } from '@shared/layouts/wrapper/components/wrapper.component';
-
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule'
   },
   {
     path: '',
-    component: WrapperComponent,
-    children: [
-      {
-        path: 'home',
-        loadChildren: './modules/home/home.module#HomeModule'
-      },
-      {
-        path: '**',
-        loadChildren: './modules/not-found/not-found.module#NotFoundModule'
-      }
-    ]
+    loadChildren: './user/user.module#UserModule'
   }
 ];
 

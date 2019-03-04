@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NotFoundComponent } from './components/not-found.component';
+import { NotFoundComponent } from './pages/not-found.component';
 import { NotFoundService } from './not-found.service';
 import { NotFoundRoutes } from './not-found.routing';
 
