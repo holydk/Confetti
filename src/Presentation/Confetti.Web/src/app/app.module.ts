@@ -28,6 +28,7 @@ import { appReducers } from './state/reducers/app.reducer';
     CookieModule.forRoot(),
     SharedModule.forRoot(),
     EffectsModule.forRoot([]),
+    MetaModule.forRoot()
   ],
   providers: [
     CookieService,

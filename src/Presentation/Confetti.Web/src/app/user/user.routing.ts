@@ -1,19 +1,25 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import {
-  WrapperComponent as UserWrapperComponent
- } from '@user/shared/layouts/wrapper/components/wrapper.component';
+import { WrapperComponent } from '@user/layouts/wrapper/components/wrapper.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './modules/home/home.module#HomeModule',
-    component: UserWrapperComponent
+    component: WrapperComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './modules/home/home.module#HomeModule'
+      },
+      {
+        path: ':slug',
+        loadChildren: './modules/home/home.module#HomeModule'
   },
   {
     path: '**',
-    loadChildren: './modules/not-found/not-found.module#NotFoundModule',
-    component: UserWrapperComponent
+        loadChildren: './modules/not-found/not-found.module#NotFoundModule'
+      }
+    ]
   }
 ];
 
