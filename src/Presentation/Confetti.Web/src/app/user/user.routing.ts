@@ -8,6 +8,11 @@ const routes: Routes = [
     component: WrapperComponent,
     children: [
       {
+        path: 'about',
+        loadChildren: './modules/about/about.module#AboutModule',
+        pathMatch: 'full'
+      },
+      {
         path: '',
         loadChildren: './modules/home/home.module#HomeModule'
       },
