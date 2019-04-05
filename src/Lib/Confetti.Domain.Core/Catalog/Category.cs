@@ -18,11 +18,6 @@ namespace Confetti.Domain.Core.Catalog
         public int? ParentId { get; set; }
 
         /// <summary>
-        /// Gets or sets the code
-        /// </summary>
-        public string Code { get; set; }
-
-        /// <summary>
         /// Gets or sets the title
         /// </summary>
         public string Title { get; set; }
@@ -48,9 +43,34 @@ namespace Confetti.Domain.Core.Catalog
         public string MetaKeywords { get; set; }
 
         /// <summary>
+        /// Gets or sets the picture identifier
+        /// </summary>
+        public int PictureId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the page size
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether customers can select the page size
+        /// </summary>
+        public bool AllowCustomersToSelectPageSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the available customer selectable page size options
+        /// </summary>
+        public string PageSizeOptions { get; set; }
+
+        /// <summary>
         /// Gets or sets the date and time of instance creation
         /// </summary>
         public DateTime CreatedOnUtc { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date and time of instance update
+        /// </summary>
+        public DateTime UpdatedOnUtc { get; set; }
 
         /// <summary>
         /// Gets or sets the position
@@ -63,8 +83,18 @@ namespace Confetti.Domain.Core.Catalog
         public bool IsIncludeInTopMenu { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the entity is published
+        /// </summary>
+        public bool Published { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the entity has been deleted
         /// </summary>
-        public bool IsActive { get; set; }
+        public bool Deleted { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to show the category on home page
+        /// </summary>
+        public bool ShowOnHomePage { get; set; }
     }
 }

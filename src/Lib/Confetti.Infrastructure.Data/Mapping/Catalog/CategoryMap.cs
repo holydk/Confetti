@@ -20,7 +20,6 @@ namespace Confetti.Infrastructure.Data.Mapping.Catalog
             builder.ToTable(nameof(Category));
             builder.HasKey(category => category.Id);
 
-            builder.Property(category => category.Code).HasMaxLength(100).IsRequired();
             builder.Property(category => category.Title).HasMaxLength(400).IsRequired();
             builder.Property(category => category.MetaKeywords).HasMaxLength(400);
             builder.Property(category => category.MetaTitle).HasMaxLength(400);
@@ -28,6 +27,7 @@ namespace Confetti.Infrastructure.Data.Mapping.Catalog
             // Indexes
             builder.HasIndex(c => c.ParentId);
             builder.HasIndex(c => c.Position);
+            builder.HasIndex(c => c.Deleted);
 
             base.Configure(builder);
         }

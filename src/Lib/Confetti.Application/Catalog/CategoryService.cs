@@ -97,9 +97,10 @@ namespace Confetti.Application.Catalog
             // LINQ
             var query = _categoryRepository.Table;
             if (!showHidden)
-                query = query.Where(c => c.IsActive);
+                query = query.Where(c => c.Published);
             if (!string.IsNullOrWhiteSpace(title))
                 query = query.Where(c => c.Title.Contains(title));
+            query = query.Where(c => !c.Deleted);
             query = query.OrderBy(c => c.ParentId)
                 .ThenBy(c => c.Position)
                 .ThenBy(c => c.Id);
