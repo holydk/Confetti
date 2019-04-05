@@ -15,8 +15,8 @@
       "@shared/*": [
         "app/shared/*"
       ],
-      "@user/shared/*": [
-        "app/user/shared/*"
+      "@user/*": [
+        "app/user/*"
       ],
       "@admin/shared/*": [
         "app/admin/shared/*"
