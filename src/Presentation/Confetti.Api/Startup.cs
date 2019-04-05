@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using AutoMapper;
 using Confetti.Api.Areas.Public.Factories;
@@ -65,6 +65,7 @@ namespace Confetti.Api
             services.AddScoped<ICacheManager, PerRequestCacheManager>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICatalogModelFactory, CatalogModelFactory>();
+            services.AddScoped<ICommonModelFactory, CommonModelFactory>();
             services.AddScoped<IInstallationService, CodeFirstInstallationService>();
 
             services.AddSingleton<IStaticCacheManager, MemoryCacheManager>();
