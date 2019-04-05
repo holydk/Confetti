@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Confetti.Application.Collections;
 using Confetti.Application.Models.Catalog;
 
@@ -29,5 +30,27 @@ namespace Confetti.Application.Catalog
         /// <returns>Categories</returns>
         Task<IPagedList<CategoryModel>> GetAllCategoriesAsync(string title, int storeId = 0,
             int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false);
+
+        /// <summary>
+        /// Gets a category
+        /// </summary>
+        /// <param name="categoryId">Category identifier</param>
+        /// <returns>Category</returns>
+        Task<CategoryModel> GetCategoryByIdAsync(int categoryId);
+
+        /// <summary>
+        /// Gets all categories displayed on the home page
+        /// </summary>
+        /// <param name="rootCategoryId">Category identifier</param>
+        /// <returns>Categories</returns>
+        Task<IList<CategoryModel>> GetAllCategoriesDisplayedOnHomePageAsync(int rootCategoryId);
+
+        /// <summary>
+        /// Get category breadcrumb by category
+        /// </summary>
+        /// <param name="model">category</param>
+        /// <param name="showHidden">A value indicating whether to show hidden records</param>
+        /// <returns>category breadcrumb</returns>
+        Task<IList<CategoryModel>> GetCategoryBreadCrumbAsync(CategoryModel model, bool showHidden = false);
     }
 }
