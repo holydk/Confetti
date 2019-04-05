@@ -13,15 +13,19 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'c/:slug',
+        loadChildren: './modules/category/category.module#CategoryModule',
+      },
+      {
         path: '',
         loadChildren: './modules/home/home.module#HomeModule'
       },
       {
         path: ':slug',
         loadChildren: './modules/home/home.module#HomeModule'
-  },
-  {
-    path: '**',
+      },
+      {
+        path: '**',
         loadChildren: './modules/not-found/not-found.module#NotFoundModule'
       }
     ]
