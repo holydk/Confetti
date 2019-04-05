@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Confetti.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,7 +66,7 @@ namespace Confetti.Infrastructure.Data
         /// </summary>
         /// <param name="exception">Exception</param>
         /// <returns>Error message</returns>
-        protected string GetFullErrorTextAndRollbackEntityChanges(DbUpdateException exception)
+        protected async Task<string> GetFullErrorTextAndRollbackEntityChangesAsync(DbUpdateException exception)
         {
             //rollback entity changes          
             var entries = _context.ChangeTracker.Entries()
@@ -73,7 +74,7 @@ namespace Confetti.Infrastructure.Data
 
             entries.ForEach(entry => entry.State = EntityState.Unchanged);
             
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return exception.ToString();
         }
 
@@ -86,29 +87,29 @@ namespace Confetti.Infrastructure.Data
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>Entity</returns>
-        public virtual TEntity GetById(object id)
+        public virtual Task<TEntity> GetByIdAsync(object id)
         {
-            return Entities.Find(id);
+            return Entities.FindAsync(id);
         }
 
         /// <summary>
         /// Insert entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public virtual void Insert(TEntity entity)
+        public virtual async Task InsertAsync(TEntity entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
             try
             {
-                Entities.Add(entity);
-                _context.SaveChanges();
+                await Entities.AddAsync(entity);
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateException exception)
             {
                 //ensure that the detailed error text is saved in the Log
-                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+                throw new Exception(await GetFullErrorTextAndRollbackEntityChangesAsync(exception), exception);
             }
         }
 
@@ -116,20 +117,20 @@ namespace Confetti.Infrastructure.Data
         /// Insert entities
         /// </summary>
         /// <param name="entities">Entities</param>
-        public virtual void Insert(IEnumerable<TEntity> entities)
+        public virtual async Task InsertAsync(IEnumerable<TEntity> entities)
         {
             if (entities == null)
                 throw new ArgumentNullException(nameof(entities));
 
             try
             {
-                Entities.AddRange(entities);
-                _context.SaveChanges();
+                await Entities.AddRangeAsync(entities);
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateException exception)
             {
                 //ensure that the detailed error text is saved in the Log
-                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+                throw new Exception(await GetFullErrorTextAndRollbackEntityChangesAsync(exception), exception);
             }
         }
 
@@ -137,7 +138,7 @@ namespace Confetti.Infrastructure.Data
         /// Update entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public virtual void Update(TEntity entity)
+        public virtual async Task UpdateAsync(TEntity entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
@@ -145,12 +146,12 @@ namespace Confetti.Infrastructure.Data
             try
             {
                 Entities.Update(entity);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateException exception)
             {
                 //ensure that the detailed error text is saved in the Log
-                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+                throw new Exception(await GetFullErrorTextAndRollbackEntityChangesAsync(exception), exception);
             }
         }
 
@@ -158,7 +159,7 @@ namespace Confetti.Infrastructure.Data
         /// Update entities
         /// </summary>
         /// <param name="entities">Entities</param>
-        public virtual void Update(IEnumerable<TEntity> entities)
+        public virtual async Task UpdateAsync(IEnumerable<TEntity> entities)
         {
             if (entities == null)
                 throw new ArgumentNullException(nameof(entities));
@@ -166,12 +167,12 @@ namespace Confetti.Infrastructure.Data
             try
             {
                 Entities.UpdateRange(entities);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateException exception)
             {
                 //ensure that the detailed error text is saved in the Log
-                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+                throw new Exception(await GetFullErrorTextAndRollbackEntityChangesAsync(exception), exception);
             }
         }
 
@@ -179,7 +180,7 @@ namespace Confetti.Infrastructure.Data
         /// Delete entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public virtual void Delete(TEntity entity)
+        public virtual async Task DeleteAsync(TEntity entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
@@ -187,12 +188,12 @@ namespace Confetti.Infrastructure.Data
             try
             {
                 Entities.Remove(entity);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateException exception)
             {
                 //ensure that the detailed error text is saved in the Log
-                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+                throw new Exception(await GetFullErrorTextAndRollbackEntityChangesAsync(exception), exception);
             }
         }
 
@@ -200,7 +201,7 @@ namespace Confetti.Infrastructure.Data
         /// Delete entities
         /// </summary>
         /// <param name="entities">Entities</param>
-        public virtual void Delete(IEnumerable<TEntity> entities)
+        public virtual async Task DeleteAsync(IEnumerable<TEntity> entities)
         {
             if (entities == null)
                 throw new ArgumentNullException(nameof(entities));
@@ -208,12 +209,12 @@ namespace Confetti.Infrastructure.Data
             try
             {
                 Entities.RemoveRange(entities);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (DbUpdateException exception)
             {
                 //ensure that the detailed error text is saved in the Log
-                throw new Exception(GetFullErrorTextAndRollbackEntityChanges(exception), exception);
+                throw new Exception(await GetFullErrorTextAndRollbackEntityChangesAsync(exception), exception);
             }
         }
             

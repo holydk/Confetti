@@ -1,12 +1,16 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Confetti.Application;
 using Confetti.Application.Caching;
 using Confetti.Application.Collections;
 using Confetti.Application.Models.Catalog;
 using Confetti.Domain.Core.Catalog;
 using Confetti.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Confetti.Application.Catalog
 {
@@ -47,9 +51,13 @@ namespace Confetti.Application.Catalog
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <param name="loadCacheableCopy">A value indicating whether to load a copy that could be cached (workaround until Entity Framework supports 2-level caching)</param>
         /// <returns>Categories</returns>
-        public IList<CategoryModel> GetAllCategories(int storeId = 0, bool showHidden = false, bool loadCacheableCopy = true)
+        public async Task<IList<CategoryModel>> GetAllCategoriesAsync(
+            int storeId = 0, 
+            bool showHidden = false, 
+            bool loadCacheableCopy = true)
         {
-            IList<CategoryModel> loadCategoriesFunc() => GetAllCategories(string.Empty, storeId, showHidden: showHidden);
+            Task<IPagedList<CategoryModel>> loadCategoriesFuncAsync() => 
+                GetAllCategoriesAsync(string.Empty, storeId, showHidden: showHidden);
 
             IList<CategoryModel> categories;
             if (loadCacheableCopy)
@@ -60,11 +68,11 @@ namespace Confetti.Application.Catalog
                     //string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()),
                     "customRole",
                     showHidden);
-                categories = _staticCacheManager.Get(key, loadCategoriesFunc);
+                categories = await _staticCacheManager.GetAsync(key, loadCategoriesFuncAsync);
             }
             else
             {
-                categories = loadCategoriesFunc();
+                categories = await loadCategoriesFuncAsync();
             }
 
             return categories;
@@ -79,8 +87,12 @@ namespace Confetti.Application.Catalog
         /// <param name="pageSize">Page size</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        public IPagedList<CategoryModel> GetAllCategories(string title, int storeId = 0,
-            int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false)
+        public async Task<IPagedList<CategoryModel>> GetAllCategoriesAsync(
+            string title, 
+            int storeId = 0,
+            int pageIndex = 0, 
+            int pageSize = int.MaxValue, 
+            bool showHidden = false)
         {
             // LINQ
             var query = _categoryRepository.Table;
@@ -93,17 +105,10 @@ namespace Confetti.Application.Catalog
                 .ThenBy(c => c.Id);
 
             // map
-            var mappedModels = query.Select(c => new CategoryModel
-            {
-                Title = c.Title,
-                Description = c.Description,
-                MetaTitle = c.MetaTitle,
-                MetaDescription = c.MetaDescription,
-                MetaKeywords = c.MetaKeywords
-            });
+            var mappedModels = query.ProjectTo<CategoryModel>(_mapper.ConfigurationProvider);
 
             // run query
-            var unsortedCategories = mappedModels.ToList();
+            var unsortedCategories = await mappedModels.ToListAsync();
 
             return new PagedList<CategoryModel>(
                 unsortedCategories,

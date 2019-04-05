@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Confetti.Domain.Interfaces
 {
@@ -16,43 +17,43 @@ namespace Confetti.Domain.Interfaces
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>Entity</returns>
-        TEntity GetById(object id);
+        Task<TEntity> GetByIdAsync(object id);
 
         /// <summary>
         /// Insert entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        void Insert(TEntity entity);
+        Task InsertAsync(TEntity entity);
 
         /// <summary>
         /// Insert entities
         /// </summary>
         /// <param name="entities">Entities</param>
-        void Insert(IEnumerable<TEntity> entities);
+        Task InsertAsync(IEnumerable<TEntity> entities);
 
         /// <summary>
         /// Update entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        void Update(TEntity entity);
+        Task UpdateAsync(TEntity entity);
 
         /// <summary>
         /// Update entities
         /// </summary>
         /// <param name="entities">Entities</param>
-        void Update(IEnumerable<TEntity> entities);
+        Task UpdateAsync(IEnumerable<TEntity> entities);
 
         /// <summary>
         /// Delete entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        void Delete(TEntity entity);
+        Task DeleteAsync(TEntity entity);
 
         /// <summary>
         /// Delete entities
         /// </summary>
         /// <param name="entities">Entities</param>
-        void Delete(IEnumerable<TEntity> entities);
+        Task DeleteAsync(IEnumerable<TEntity> entities);
             
         #endregion
 

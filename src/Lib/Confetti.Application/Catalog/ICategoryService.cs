@@ -16,7 +16,7 @@ namespace Confetti.Application.Catalog
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <param name="loadCacheableCopy">A value indicating whether to load a copy that could be cached (workaround until Entity Framework supports 2-level caching)</param>
         /// <returns>Categories</returns>
-        IList<CategoryModel> GetAllCategories(int storeId = 0, bool showHidden = false, bool loadCacheableCopy = true);
+        Task<IList<CategoryModel>> GetAllCategoriesAsync(int storeId = 0, bool showHidden = false, bool loadCacheableCopy = true);
 
         /// <summary>
         /// Gets all categories
@@ -27,7 +27,7 @@ namespace Confetti.Application.Catalog
         /// <param name="pageSize">Page size</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        IPagedList<CategoryModel> GetAllCategories(string title, int storeId = 0,
+        Task<IPagedList<CategoryModel>> GetAllCategoriesAsync(string title, int storeId = 0,
             int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false);
     }
 }

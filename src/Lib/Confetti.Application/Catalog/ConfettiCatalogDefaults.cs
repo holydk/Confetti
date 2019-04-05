@@ -15,7 +15,7 @@ namespace Confetti.Application.Catalog
         /// {1} : comma separated list of customer roles
         /// {2} : show hidden records?
         /// </remarks>
-        public static string CategoriesAllCacheKey => "Nop.category.all-{0}-{1}-{2}";
+        public static string CategoriesAllCacheKey => "Confetti.category.all-{0}-{1}-{2}";
             
         #endregion
     }
