@@ -21,9 +21,9 @@ namespace Confetti.Domain.Core.Catalog
         public bool IsFeaturedProduct { get; set; }
 
         /// <summary>
-        /// Gets or sets the display order
+        /// Gets or sets the position
         /// </summary>
-        public int DisplayOrder { get; set; }
+        public int Position { get; set; }
         
         /// <summary>
         /// Gets the category
