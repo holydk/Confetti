@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Linq;
 using AutoMapper;
 using Confetti.Api.Areas.Public.Factories;
 using Confetti.Application.Caching;
 using Confetti.Application.Catalog;
+using Confetti.Application.Infrastructure;
 using Confetti.Application.Installation;
 using Confetti.Application.Mapping;
 using Confetti.Domain.Interfaces;
@@ -40,6 +41,8 @@ namespace Confetti.Api
 
             services.AddCors();
             
+            services.AddScoped<IConfettiFileProvider, ConfettiFileProvider>();
+
             var migrationsAssembly = typeof(ConfettiContext).Assembly.GetName().Name;
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DbContext, ConfettiContext>(options =>
