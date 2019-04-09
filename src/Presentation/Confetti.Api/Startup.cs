@@ -43,11 +43,21 @@ namespace Confetti.Api
             
             services.AddScoped<IConfettiFileProvider, ConfettiFileProvider>();
 
+            var dataProviderName = Configuration.GetSection("DataProvider").Value;
+            if (dataProviderName == "SQLServer")
+            {
             var migrationsAssembly = typeof(ConfettiContext).Assembly.GetName().Name;
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DbContext, ConfettiContext>(options =>
                 options.UseSqlServer(connectionString,
                 x => x.MigrationsAssembly(migrationsAssembly)));
+
+                services.AddTransient<IDataProvider, SqlServerDataProvider>();
+            }
+            else
+            {
+                throw new Exception($"Not supported data provider name: {dataProviderName}");
+            }
 
             // dynamically load all entity and query type configurations
             var typeConfigurations = typeof(IOrderedMapperProfile).Assembly.GetTypes().Where(type =>
@@ -106,7 +116,9 @@ namespace Confetti.Api
             {
                 // Make sure we have the database
                 serviceScope.ServiceProvider
-                    .GetService<DbContext>().Database.Migrate();
+                    .GetService<IDataProvider>()
+                    .InitializeDatabase();
+                // Install sample data
                 serviceScope.ServiceProvider
                     .GetService<IInstallationService>()
                     .InstallDataAsync(updateData: false)
