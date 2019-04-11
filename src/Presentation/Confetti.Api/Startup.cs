@@ -77,6 +77,7 @@ namespace Confetti.Api
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<ICacheManager, PerRequestCacheManager>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICatalogModelFactory, CatalogModelFactory>();
             services.AddScoped<ICommonModelFactory, CommonModelFactory>();
             services.AddScoped<IInstallationService, CodeFirstInstallationService>();
