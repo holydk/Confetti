@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Confetti.Application.Installation
+namespace Confetti.Domain.Interfaces
 {
     /// <summary>
     /// Installation service
