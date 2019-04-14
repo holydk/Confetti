@@ -1,4 +1,4 @@
-namespace Confetti.Domain.Core.Catalog
+namespace Confetti.Domain.Catalog
 {
     /// <summary>
     /// Represents a product category mapping

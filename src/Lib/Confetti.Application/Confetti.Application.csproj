@@ -5,7 +5,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Confetti.Infrastructure.Data\Confetti.Infrastructure.Data.csproj"/>
     <ProjectReference Include="..\Confetti.Domain.Interfaces\Confetti.Domain.Interfaces.csproj"/>
-    <ProjectReference Include="..\Confetti.Domain.Core\Confetti.Domain.Core.csproj"/>
+    <ProjectReference Include="..\Confetti.Domain\Confetti.Domain.csproj"/>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0"/>

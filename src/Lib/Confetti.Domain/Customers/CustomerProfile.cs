@@ -1,4 +1,4 @@
-namespace Confetti.Domain.Core.Customers
+namespace Confetti.Domain.Customers
 {
     /// <summary>
     /// Represents a customer profile

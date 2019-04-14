@@ -1,4 +1,4 @@
-using Confetti.Domain.Core.Shipping;
+using Confetti.Domain.Shipping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

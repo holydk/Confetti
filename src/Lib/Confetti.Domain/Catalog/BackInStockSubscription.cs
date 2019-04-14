@@ -1,7 +1,7 @@
 using System;
-using Confetti.Domain.Core.Customers;
+using Confetti.Domain.Customers;
 
-namespace Confetti.Domain.Core.Catalog
+namespace Confetti.Domain.Catalog
 {
     /// <summary>
     /// Represents a back in stock subscription

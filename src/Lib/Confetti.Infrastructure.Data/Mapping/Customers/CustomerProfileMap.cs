@@ -1,4 +1,4 @@
-using Confetti.Domain.Core.Customers;
+using Confetti.Domain.Customers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

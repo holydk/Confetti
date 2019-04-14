@@ -1,4 +1,4 @@
-using Confetti.Domain.Core.Catalog;
+using Confetti.Domain.Catalog;
 using Confetti.Infrastructure.Data.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Confetti.Domain.Core.Catalog
+namespace Confetti.Domain.Catalog
 {
     /// <summary>
     /// Represents a product

@@ -1,6 +1,6 @@
 using System;
 
-namespace Confetti.Domain.Core.Catalog
+namespace Confetti.Domain.Catalog
 {
     /// <summary>
     /// Represents a category

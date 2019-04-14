@@ -1,4 +1,4 @@
-namespace Confetti.Domain.Core.Shipping
+namespace Confetti.Domain.Shipping
 {
     /// <summary>
     /// Represents a shipment

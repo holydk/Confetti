@@ -1,5 +1,5 @@
 using Confetti.Application.Models.Catalog;
-using Confetti.Domain.Core.Catalog;
+using Confetti.Domain.Catalog;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Confetti.Application.Mapping.Catalog

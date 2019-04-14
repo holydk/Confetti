@@ -8,7 +8,7 @@ using Confetti.Application;
 using Confetti.Application.Caching;
 using Confetti.Application.Collections;
 using Confetti.Application.Models.Catalog;
-using Confetti.Domain.Core.Catalog;
+using Confetti.Domain.Catalog;
 using Confetti.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

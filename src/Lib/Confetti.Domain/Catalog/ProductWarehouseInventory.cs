@@ -1,6 +1,6 @@
-using Confetti.Domain.Core.Shipping;
+using Confetti.Domain.Shipping;
 
-namespace Confetti.Domain.Core.Catalog
+namespace Confetti.Domain.Catalog
 {
     /// <summary>
     /// Represents a record to manage product inventory per warehouse
