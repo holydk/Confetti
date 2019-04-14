@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Confetti.Api.Areas.Public.Factories;
-using Confetti.Api.Controllers;
 using Confetti.Application.Catalog;
+using Confetti.Framework.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Confetti.Api.Areas.Public.Controllers
@@ -34,7 +34,7 @@ namespace Confetti.Api.Areas.Public.Controllers
         public async Task<IActionResult> GetAllCategoriesAsync()
         {
             var categories = await _categoryService.GetAllCategoriesAsync();    
-            return Response(categories);
+            return Ok(categories);
         }
 
         [HttpGet]
@@ -45,11 +45,11 @@ namespace Confetti.Api.Areas.Public.Controllers
             var category = await _categoryService.GetCategoryByIdAsync(rootCategoryId);
 
             if (category == null)
-                return Response(null);
+                return NotFound();
 
             var categoryhomeModel = await _catalogModelFactory.PrepareCategoryHomeModelAsync(category);
 
-            return Response(categoryhomeModel);
+            return Ok(categoryhomeModel);
         }
 
         [HttpGet]
@@ -60,11 +60,11 @@ namespace Confetti.Api.Areas.Public.Controllers
             var category = await _categoryService.GetCategoryByIdAsync(categoryId);
 
             if (category == null)
-                return Response(null);
+                return NotFound(null);
 
             var categoryModel = await _catalogModelFactory.PrepareCategoryPublicModelAsync(category);
 
-            return Response(categoryModel);
+            return Ok(categoryModel);
         }
             
         #endregion

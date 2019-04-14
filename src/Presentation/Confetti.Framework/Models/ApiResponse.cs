@@ -1,4 +1,4 @@
-namespace Confetti.Api.Models
+namespace Confetti.Framework.Models
 {
     /// <summary>
     /// The response for all Web API calls made

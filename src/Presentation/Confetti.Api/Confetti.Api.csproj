@@ -11,6 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Lib\Confetti.Application\Confetti.Application.csproj"/>
     <ProjectReference Include="..\..\Lib\Confetti.Infrastructure.Data\Confetti.Infrastructure.Data.csproj"/>
-    <ProjectReference Include="..\..\Lib\Confetti.Domain.Interfaces\Confetti.Domain.Interfaces.csproj"/>
+    <ProjectReference Include="..\Confetti.Framework\Confetti.Framework.csproj"/>
   </ItemGroup>
 </Project>

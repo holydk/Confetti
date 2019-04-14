@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using Confetti.Api.Areas.Public.Factories;
-using Confetti.Api.Controllers;
 using Confetti.Application.Caching;
 using Confetti.Application.Catalog;
+using Confetti.Framework.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Confetti.Api.Areas.Public.Controllers
@@ -34,7 +34,7 @@ namespace Confetti.Api.Areas.Public.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             var layoutModel = await _commonModelFactory.PrepareLayoutModelAsync();
-            return Response(layoutModel);
+            return Ok(layoutModel);
         }
 
         [HttpGet]
