@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Confetti.Api.Areas.Public.Factories;
-using Confetti.Application.Caching;
 using Confetti.Application.Catalog;
+using Confetti.Domain.Core.Caching;
 using Confetti.Framework.Controllers;
 using Microsoft.AspNetCore.Mvc;
 

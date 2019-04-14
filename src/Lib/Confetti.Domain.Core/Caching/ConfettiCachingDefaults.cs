@@ -1,4 +1,4 @@
-namespace Confetti.Application.Caching
+namespace Confetti.Domain.Core.Caching
 {
     /// <summary>
     /// Represents default values related to caching

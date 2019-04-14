@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Confetti.Application.Collections
+namespace Confetti.Domain.Core.Collections
 {
     /// <summary>
     /// Paged list

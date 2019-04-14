@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Primitives;
 
-namespace Confetti.Application.Caching
+namespace Confetti.Domain.Core.Caching
 {
     /// <summary>
     /// Represents a memory cache manager 

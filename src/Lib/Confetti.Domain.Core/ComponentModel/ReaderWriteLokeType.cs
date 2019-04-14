@@ -1,4 +1,4 @@
-namespace Confetti.Application.ComponentModel
+namespace Confetti.Domain.Core.ComponentModel
 {
     /// <summary>
     /// Reader/Write locker type

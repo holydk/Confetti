@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Confetti.Application;
-using Confetti.Application.Caching;
-using Confetti.Application.Collections;
 using Confetti.Application.Models.Catalog;
 using Confetti.Domain.Catalog;
+using Confetti.Domain.Core.Caching;
+using Confetti.Domain.Core.Collections;
 using Confetti.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

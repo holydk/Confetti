@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Confetti.Application.Collections;
 using Confetti.Application.Models.Catalog;
+using Confetti.Domain.Core.Collections;
 
 namespace Confetti.Application.Catalog
 {

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Confetti.Application.Collections;
 using Confetti.Application.Models.Catalog;
 
 namespace Confetti.Application.Catalog

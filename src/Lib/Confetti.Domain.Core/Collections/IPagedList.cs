@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Confetti.Application.Collections
+namespace Confetti.Domain.Core.Collections
 {
     /// <summary>
     /// Paged list interface

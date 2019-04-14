@@ -1,6 +1,6 @@
 using System;
 
-namespace Confetti.Application.Caching
+namespace Confetti.Domain.Core.Caching
 {
     /// <summary>
     /// Cache manager interface

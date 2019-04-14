@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Confetti.Api.Areas.Public.Models.Catalog;
 using Confetti.Api.Infrastructure.Cache;
-using Confetti.Application.Caching;
 using Confetti.Application.Catalog;
 using Confetti.Application.Models.Catalog;
+using Confetti.Domain.Core.Caching;
 
 namespace Confetti.Api.Areas.Public.Factories
 {

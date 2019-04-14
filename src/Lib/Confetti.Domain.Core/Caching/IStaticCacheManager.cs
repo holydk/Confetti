@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace Confetti.Application.Caching
+namespace Confetti.Domain.Core.Caching
 {
     /// <summary>
     /// Represents a manager for caching between HTTP requests (long term caching)

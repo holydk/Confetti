@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Confetti.Application.ComponentModel
+namespace Confetti.Domain.Core.ComponentModel
 {
     /// <summary>
     /// Provides a convenience methodology for implementing locked access to resources. 

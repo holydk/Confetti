@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Confetti.Domain.Core.ComponentModel;
 using Microsoft.AspNetCore.Http;
-using Confetti.Application.ComponentModel;
 
-namespace Confetti.Application.Caching
+namespace Confetti.Domain.Core.Caching
 {
     /// <summary>
     /// Represents a manager for caching during an HTTP request (short term caching)
