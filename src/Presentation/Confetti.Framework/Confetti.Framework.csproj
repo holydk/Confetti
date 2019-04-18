@@ -5,7 +5,4 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.1"/>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Lib\Confetti.Domain.Interfaces\Confetti.Domain.Interfaces.csproj"/>
-  </ItemGroup>
 </Project>

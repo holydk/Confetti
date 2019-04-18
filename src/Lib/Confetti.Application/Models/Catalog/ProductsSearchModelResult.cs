@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Confetti.Domain.Core.Collections;
+using Confetti.Common.Collections;
 
 namespace Confetti.Application.Models.Catalog
 {

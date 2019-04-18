@@ -1,8 +1,8 @@
 using System.Data.Common;
 using System.Data.SqlClient;
-using Confetti.Domain.Core.Infrastructure;
-using Confetti.Domain.Interfaces;
+using Confetti.Common.Data;
 using Confetti.Infrastructure.Data.Extensions;
+using Confetti.Infrastructure.FileProviders;
 using Microsoft.EntityFrameworkCore;
 
 namespace Confetti.Infrastructure.Data

@@ -6,7 +6,7 @@ using Confetti.Api.Areas.Public.Models.Catalog;
 using Confetti.Api.Infrastructure.Cache;
 using Confetti.Application.Catalog;
 using Confetti.Application.Models.Catalog;
-using Confetti.Domain.Core.Caching;
+using Confetti.Infrastructure.Caching;
 
 namespace Confetti.Api.Areas.Public.Factories
 {

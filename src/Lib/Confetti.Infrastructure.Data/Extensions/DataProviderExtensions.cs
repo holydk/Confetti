@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 using System.Data.Common;
-using Confetti.Domain.Interfaces;
+using Confetti.Common.Data;
 
 namespace Confetti.Infrastructure.Data.Extensions
 {

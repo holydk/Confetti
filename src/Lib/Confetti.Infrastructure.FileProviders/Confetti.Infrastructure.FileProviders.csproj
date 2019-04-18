@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.5.0"/>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0"/>
+  </ItemGroup>
+</Project>
