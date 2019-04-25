@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.1"/>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Lib\Confetti.Account.Application\Confetti.Account.Application.csproj"/>
+    <ProjectReference Include="..\..\Lib\Confetti.Account.Infrastructure\Confetti.Account.Infrastructure.csproj"/>
+    <ProjectReference Include="..\..\Lib\Confetti.Account.Infrastructure.Identity\Confetti.Account.Infrastructure.Identity.csproj"/>
+    <ProjectReference Include="..\Confetti.Framework\Confetti.Framework.csproj"/>
+  </ItemGroup>
+</Project>
