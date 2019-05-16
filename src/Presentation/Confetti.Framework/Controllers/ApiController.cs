@@ -10,7 +10,7 @@ namespace Confetti.Framework.Controllers
     {
         public override OkObjectResult Ok(object value)
         {           
-            return Ok(new ApiResponse
+            return base.Ok(new ApiResponse
             {
                 Response = value
             });
