@@ -13,6 +13,7 @@ import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 import { UniversalStorage } from '@shared/storage/universal.storage';
 import { appReducers } from './state/reducers/app.reducer';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { appReducers } from './state/reducers/app.reducer';
     CookieModule.forRoot(),
     SharedModule.forRoot(),
     EffectsModule.forRoot([]),
-    MetaModule.forRoot()
+    MetaModule.forRoot(),
+    CoreModule.forRoot()
   ],
   providers: [
     CookieService,

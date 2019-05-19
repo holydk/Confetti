@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './admin/admin.module#AdminModule'
   },
   {
+    path: 'signin-oidc',
+    loadChildren: './modules/signin-oidc/signin-oidc.module#SignInOidcModule'
+  },
+  {
     path: '',
     loadChildren: './user/user.module#UserModule'
   }
