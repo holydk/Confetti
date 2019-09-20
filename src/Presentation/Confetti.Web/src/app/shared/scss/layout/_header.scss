@@ -1,0 +1,23 @@
+$config: mat-typography-config();
+
+.header-row {
+  @include make-row();
+  height: 100%;
+}
+
+.navbar-item {
+  @include mat-typography-level-to-styles($config, body-1);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: currentColor;
+  padding: 0.5rem 1rem;
+  &-active {
+    @extend .navbar-item;
+    background-color: mat-color($accent, lighter)
+  }
+
+  &-up {
+    @extend .navbar-item;
+    text-transform: uppercase;
+  }
+}

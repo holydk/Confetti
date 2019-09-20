@@ -25,24 +25,8 @@ export class WrapperComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.loadLayoutModel();
-    // if (this.layoutModel) {
-    //   const categories = this.layoutModel.headerModel.topMenuModel.categories;
-    //   if (this.router.url === '/' && categories.length > 0) {
-    //     this.router.navigate(['/', categories[0].route]);
-    //   }
-    // }
-
-    // this.router.events.pipe(
-    //   takeUntil(this.unsubscribed$),
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe(() => {
-    //     if (this.router === '/')
-    // });
-
-    this.getLayoutModel().pipe(
-      takeUntil(this.unsubscribed$)
-    ).subscribe(model => {
+    this.store.dispatch(new LoadLayoutModel());
+    this.getLayoutModel().subscribe(model => {
       this.layoutModel = model;
 
       // redirect to first root category
@@ -51,22 +35,12 @@ export class WrapperComponent implements OnInit, OnDestroy {
         this.router.navigate(['/', categories[0].route]);
       }
     });
-
-    // this.store.select(getLayoutModel).subscribe(layout => {
-    //   this.layoutModel = layout;
-    //   const categories1 = layout.headerModel.topMenuModel.categories;
-    //   if (this.router.url === '/' && categories1.length > 0) {
-    //     this.router.navigate(['/', categories1[0].route]);
-    //   }
-    // });
-  }
-
-  private loadLayoutModel() {
-    this.store.dispatch(new LoadLayoutModel());
   }
 
   private getLayoutModel(): Observable<LayoutModel> {
-    return this.store.select(selectLayoutModel);
+    return this.store.select(selectLayoutModel).pipe(
+      takeUntil(this.unsubscribed$)
+    );
   }
 
   ngOnDestroy(): void {

@@ -8,13 +8,17 @@ import { HomeRoutes } from './home.routing';
 import { homeReducer, homeStateKey } from './state/reducers/home.reducer';
 import { HomeEffects } from './state/effects/home.effects';
 import { HomeService } from './home.service';
+import { MaterialModule } from '@shared/material/material.module';
+import { NguCarouselModule } from '@ngu/carousel';
 
 @NgModule({
   imports: [
     CommonModule,
     HomeRoutes,
     StoreModule.forFeature(homeStateKey, homeReducer),
-    EffectsModule.forFeature([HomeEffects])
+    EffectsModule.forFeature([HomeEffects]),
+    MaterialModule,
+    NguCarouselModule
   ],
   declarations: [HomeComponent],
   providers: [

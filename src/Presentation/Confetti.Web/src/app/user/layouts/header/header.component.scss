@@ -1,0 +1,23 @@
+@import 'abstracts/variables';
+
+img {
+  color: inherit;
+  width: 94px;
+  height: auto;
+}
+
+.header-widget {
+  &+& {
+    margin-left: 12px;
+  }
+}
+
+.filled-row {
+  align-items: stretch;
+}
+
+.nytest {
+  @extend .filled-row;
+  height: 50px;
+  background-color: mat-color($accent, lighter);
+}

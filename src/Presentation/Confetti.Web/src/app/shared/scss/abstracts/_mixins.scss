@@ -1,0 +1,16 @@
+@mixin media-breakpoint-up($breakpoint-key) {
+  @media (min-width: map-get($map: $grid-breakpoints, $key: $breakpoint-key)) {
+    @content;
+  }
+}
+
+@mixin make-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin make-col {
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+}

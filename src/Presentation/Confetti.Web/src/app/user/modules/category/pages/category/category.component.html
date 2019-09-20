@@ -1,3 +1,151 @@
-<p>
-  category works!
-</p>
+<div *ngIf="(category$ | async) as category" class="wrapper">
+  <div class="br-container">
+    <div class="row">     
+      <nav class="nav" *ngIf="(breadcrumbPath$ | async) as breadcrumbPath">
+        <li *ngFor="let path of breadcrumbPath">
+          <a class="br-link" [routerLink]="[ '#' ]">{{ path }}</a>
+        </li>
+      </nav> 
+    </div>
+  </div>
+</div>
+
+<div class="b-category-container">
+  <div *ngIf="(category$ | async) as category" class="wrapper">
+    <div class="row flex-column align-items-center">
+      <h1 class="b-category-title">{{ category.title }}</h1>
+      <h2 class="b-category-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h2>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="b-category-container-sub">
+    <div class="wrapper">
+      <div class="col">
+        <div class="row justify-content-center">
+          <mat-chip-list>
+            <!-- <mat-chip color="primary">Название категории</mat-chip>
+            <mat-chip color="primary">Название категории</mat-chip>
+            <mat-chip color="primary">Название категории</mat-chip>
+            <mat-chip color="primary">Название категории</mat-chip>
+            <mat-chip color="primary">Название категории</mat-chip> -->
+            <mat-basic-chip class="mat-category-chip" selected>Название категории</mat-basic-chip>
+            <mat-basic-chip class="mat-category-chip" selected>Название категории</mat-basic-chip>
+            <mat-basic-chip class="mat-category-chip" selected>Название категории</mat-basic-chip>
+            <mat-basic-chip class="mat-category-chip" selected>Название категории</mat-basic-chip>
+            <mat-basic-chip class="mat-category-chip" selected>Название категории</mat-basic-chip>
+            <!-- <mat-chip color="accent" selected>Название категории</mat-chip>
+            <mat-chip color="accent" selected>Название категории</mat-chip>
+            <mat-chip color="accent" selected>Название категории</mat-chip>
+            <mat-chip color="accent" selected>Название категории</mat-chip>
+            <mat-chip color="accent" selected>Название категории</mat-chip> -->
+          </mat-chip-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cat-attrs-container">
+  <div class="wrapper">
+    <div class="col">
+      <div class="row">
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Сортировать</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Цена</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Название фильтра</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Название фильтра</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Название фильтра</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Название фильтра</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Название фильтра</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="cat-attr" color="accent">
+          <mat-label>Название фильтра</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="col">
+    <div class="products-container">
+      <mat-grid-list cols="4" gutterSize=15px rowHeight=3:4>
+        <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows">
+            <div class="header-row flex-column flex-fill">
+              <div class="row dummy-banner flex-fill align-items-center justify-content-center">
+                <mat-icon class="material-icons-outlined dummy-banner-icon">clear</mat-icon>
+              </div>
+              <div class="row">
+                <div class="row flex-column flex-fill">
+                  <p class="product-title">Название продукта</p>
+                  <p class="product-price">1&nbsp;500&nbsp;руб.</p>
+                </div>
+                <div class="row align-items-center">
+                  <button mat-icon-button>
+                    <mat-icon class="material-icons-outlined">favorite_border</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>    
+          {{tile.text}}
+          <!-- <mat-grid-tile-footer >
+            Название
+          </mat-grid-tile-footer> -->
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>   
+  </div>
+</div>

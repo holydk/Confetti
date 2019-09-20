@@ -1,57 +1,58 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { LayoutModel } from '@app/user/models/common/layout_model';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getBreadcrumbPath } from '@shared/state/reducers/shared.selectors';
+import { selectBreadcrumbPath } from '@shared/state/reducers/shared.selectors';
 import { AppState } from '@app/state/reducers/app.state';
+import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { CategorySimpleModel } from '@user/models/catalog/category_simple_model';
-import { HeaderModel } from '@user/models/common/header_model';
+import { selectMenuCategories } from '../state/reducers/layouts.selectors';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  public selectedCategoryId = 0;
+export class HeaderComponent implements OnInit, OnDestroy {
+  //#region Fields
 
-  @Input()
-  public headerModel: HeaderModel;
+  private unsubscribed$ = new Subject();
+
+  //#endregion
+
+  //#region Properties
+
+  public categories$: Observable<CategorySimpleModel[]>;
+  public breadcrumbPath$: Observable<string[]>;
+
+  //#endregion
 
   constructor(
     private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
-    this.store.select(getBreadcrumbPath).subscribe(path => {
-      console.log('Current path');
-      console.log(path);
+    this.categories$ = this.getMenuCategories();
+    this.breadcrumbPath$ = this.getBreadcrumbPath();
+  }
 
-      if (this.headerModel && path.length > 0) {
-        const categories = this.headerModel.topMenuModel.categories;
-        if (categories.length > 0) {
-          const category = categories.find(c => c.title === path[0]);
-          if (category) {
-            this.selectedCategoryId = categories.indexOf(category);
-            console.log(this.selectedCategoryId);
-          }
-        }
-      }
-    });
-    // this.store.select(getTopCategories).pipe(map(categories => {
-    //   return this.store.select(getBreadcrumbPath);
-    // })).subscribe(path$ => path$);
+  //#region Utilities
 
-    // this.store.select(getBreadcrumbPath).subscribe(path => {
-    //   console.log('getBreadcrumbPath');
-    //   console.log(path);
-    //   const categories = this.layoutModel.topMenuModel.categories;
-    //   if (categories && categories.length > 0) {
-    //     const category = categories.find(c => c.title === path[0]);
-    //     if (category) {
-    //       this.selectedCategoryId = categories.indexOf(category);
-    //       console.log(category);
-    //     }
-    //   }
-    // });
+  private getBreadcrumbPath(): Observable<string[]> {
+    return this.store.select(selectBreadcrumbPath).pipe(
+      takeUntil(this.unsubscribed$)
+    );
+  }
+
+  private getMenuCategories(): Observable<CategorySimpleModel[]> {
+    return this.store.select(selectMenuCategories).pipe(
+      takeUntil(this.unsubscribed$)
+    );
+  }
+
+  //#endregion
+
+  ngOnDestroy(): void {
+    this.unsubscribed$.next();
+    this.unsubscribed$.complete();
   }
 }

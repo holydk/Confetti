@@ -1,3 +1,35 @@
-<app-top-menu [topMenuModel]="headerModel?.topMenuModel"></app-top-menu>
-<app-menu [topMenuModel]="headerModel?.topMenuModel"></app-menu>
-<p>{{selectedCategoryId}}</p>
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <mat-toolbar-row class="filled-row">
+    <div class="wrapper">
+      <div class="header-row">
+        <div class="col">
+          <div class="header-row align-items-center">
+            <a href="/">
+              <div class="row align-items-center">
+                <img src="./assets/icon_test_bold_2.svg" alt="Confetti">
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col">
+          <app-root-categories [categories]="categories$ | async" [breadcrumbPath]="breadcrumbPath$ | async"></app-root-categories>
+        </div>
+        <div class="flex-fill"></div>
+        <div class="header-row align-items-center">
+          <div class="header-widget">
+            <button mat-icon-button>
+              <mat-icon class="material-icons-outlined">favorite_border</mat-icon>
+            </button>
+          </div>
+          <app-account-dropdown class="header-widget"></app-account-dropdown>
+          <app-cart-dropdown class="header-widget"></app-cart-dropdown>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="nytest">
+    <div class="wrapper">
+      <app-categories-dropdown [categories]="categories$ | async"></app-categories-dropdown>
+    </div>   
+  </mat-toolbar-row>
+</mat-toolbar>

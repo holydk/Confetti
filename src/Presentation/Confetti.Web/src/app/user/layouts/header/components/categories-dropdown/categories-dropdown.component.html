@@ -1,0 +1,4 @@
+<nav class="nav header-row align-items-center">
+  <a *ngFor="let category of childCategories" class="navbar-item" [routerLink]="[ '/c', category.route ]" >{{category.title}}</a>
+</nav>
+

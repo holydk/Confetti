@@ -7,6 +7,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { categoryReducer, categoryStateKey } from './state/reducers/category.reducer';
 import { CategoryEffects } from './state/effects/category.effects';
+import { CategoryResolveGuard } from './guard/category.resolver';
+import { MaterialModule } from '@shared/material/material.module';
 
 @NgModule({
   declarations: [CategoryComponent],
@@ -14,10 +16,12 @@ import { CategoryEffects } from './state/effects/category.effects';
     CommonModule,
     CategoryRoutes,
     StoreModule.forFeature(categoryStateKey, categoryReducer),
-    EffectsModule.forFeature([CategoryEffects])
+    EffectsModule.forFeature([CategoryEffects]),
+    MaterialModule
   ],
   providers: [
-    CategoryService
+    CategoryService,
+    CategoryResolveGuard
   ]
 })
 export class CategoryModule { }

@@ -39,6 +39,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/shared/scss"
+              ]
+            },
             "scripts": [],
             "es5BrowserSupport": true
           },
@@ -89,7 +94,12 @@
           "options": {
             "outputPath": "./bin/dist-server",
             "main": "src/main.server.ts",
-            "tsConfig": "src/tsconfig.server.json"
+            "tsConfig": "src/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/shared/scss"
+              ]
+            }
           },
           "configurations": {
             "dev": {

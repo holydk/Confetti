@@ -12,10 +12,13 @@ export function getClientSettings(): UserManagerSettings {
     silent_redirect_uri: 'http://localhost:4200/silent-refresh.html',
     post_logout_redirect_uri: 'http://localhost:4200/',
     response_type: 'id_token token',
+    // response_type: 'code',
     scope: 'openid profile confetti_api account email roles',
-    automaticSilentRenew: true,
+    // automaticSilentRenew: true,
     filterProtocolClaims: true,
-    // loadUserInfo: true
+    loadUserInfo: true
+    // acr_values: '0',
+    // response_mode: 'json'
   };
 }
 
@@ -24,6 +27,7 @@ export function getClientSettings(): UserManagerSettings {
 })
 export class AuthService {
   private manager = new UserManager(getClientSettings());
+  // private manager: UserManager;
 
   constructor(
     private router: Router

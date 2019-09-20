@@ -1,0 +1,136 @@
+@model LoginViewModel
+
+@{
+    var signin = Context.Request.Query["signin"];
+    ViewData["Title"] = "Войти";
+}
+
+<partial name="_ValidationSummary" />
+
+<div class="row justify-content-center">
+    <div class="panel shadow-box shadow-box_additionals">
+        <a class="nav-link text-uppercase" asp-area="" asp-controller="Account" asp-action="Register" asp-route-signin="@signin">Впервые на confetti?</a>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+
+    @if (Model.EnableLocalLogin)
+    {
+        
+        <div class="panel shadow-box">
+            <div class="panel-body">
+
+                <p class="font-weight-normal text-uppercase text-center">Войти через электронную почту</p>
+
+                <form asp-route="Login">
+
+                    <fieldset>
+
+                        <div class="form-group">
+                            <label asp-for="Email">E-mail</label>
+                            <span asp-validation-for="Email" class="danger"></span>
+                            <input class="form-control" asp-for="Email" autofocus></input>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Password">Пароль</label>
+                            <span asp-validation-for="Password" class="danger"></span>
+                            <input type="password" class="form-control" asp-for="Password" autocomplete="off"></input>
+                        </div>
+
+                        @if (Model.AllowRememberLogin)
+                        {
+                            <div class="form-group">
+                                <label asp-for="RememberLogin" class="checkbox">
+                                    <input asp-for="RememberLogin">
+                                    <strong>Запомнить меня</strong>
+                                </label>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" name="button" value="login">Войти</button>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+                <div class="row justify-content-center">
+                    <a class="forgotten-password" href="#">Забыли пароль?</a>
+                </div>
+
+                <hr class="hr-with-text">
+                <div class="row justify-content-center">
+                    <p class="text-center hr-with-text">или</p>
+                </div>
+
+                <p class="font-weight-normal text-uppercase text-center">Войти через</p>
+
+                <div class="socials-buttons justify-content-center">
+                    <a href="#" class="socials-buttons__button socials-buttons__button_vkontakte" title="Войти с помощью Вконтакте">
+                        <svg width="36" height="36">
+                            <use xlink:href="/icons-sprite.svg#vk"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="socials-buttons__button socials-buttons__button_google" title="Войти с помощью Google">
+                        <svg width="36" height="36">
+                            <use xlink:href="/icons-sprite.svg#google"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="socials-buttons__button socials-buttons__button_instagram" title="Войти с помощью Instagram">
+                        <svg width="36" height="36">
+                            <use xlink:href="/icons-sprite.svg#instagram"></use>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        
+    }
+
+    @if (Model.VisibleExternalProviders.Any())
+    {
+        <div class="col-md-6 col-sm-6 external-providers">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">External Login</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-inline">
+                        @foreach (var provider in Model.VisibleExternalProviders)
+                        {
+                            <li>
+                                <a class="btn btn-default"
+                                    asp-controller="External"
+                                    asp-action="Challenge"
+                                    asp-route-provider="@provider.AuthenticationScheme">
+                                    @provider.DisplayName
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+    {
+        <div class="alert alert-warning">
+            <strong>Invalid login request</strong>
+            There are no login schemes configured for this client.
+        </div>
+    }
+</div>
+
+
+
+@section Header {
+    <partial name="_ValidationStylesPartial" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

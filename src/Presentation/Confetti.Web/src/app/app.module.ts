@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { UniversalStorage } from '@shared/storage/universal.storage';
 import { appReducers } from './state/reducers/app.reducer';
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'my-app' }),
+    BrowserAnimationsModule,
     TransferHttpCacheModule,
     HttpClientModule,
     RouterModule,

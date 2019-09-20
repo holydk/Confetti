@@ -13,7 +13,6 @@ export function identityReducer(
   state = initialState,
   action: { type: IdentityActionsTypes, payload: any}
 ): IdentityState {
-  console.log(action);
   switch (action.type) {
     case IdentityActionsTypes.GetUserSuccess:
       return {

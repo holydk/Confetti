@@ -1,1 +1,87 @@
-<p>Home</p>
+<ng-container *ngIf="(category$ | async) as category">
+  <!-- <p>{{category | json}}</p> -->
+</ng-container>
+<div class="wrapper">
+  <div class="home-col">
+    <div class="b-section">
+      <mat-grid-list cols="5">
+        <mat-grid-tile
+            *ngFor="let tile of tiles"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            class="dummy-banner">
+            <div>
+              <mat-icon class="material-icons-outlined dummy-banner-icon">clear</mat-icon>
+            </div>
+            <ng-container *ngIf="tile.cols === 3 && tile.rows === 2">
+            </ng-container>         
+          {{tile.text}}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="b-section">
+      <div class="row justify-content-center">
+        <span class="mat-headline">Название баннера</span>
+      </div>
+      <ngu-carousel #myCarousel [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
+        <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate" [@slider]="ani"> <!-- [@slider]="ani" PLease this animation to this tile to see animation. stackblitz have error with animations -->
+          <div class="tile dummy-banner" [style.background]="'height=80px;'">
+              <div>
+                <mat-icon class="material-icons-outlined dummy-banner-icon">clear</mat-icon>
+              </div>
+          </div>
+        </ngu-tile>
+      
+        <button mat-mini-fab NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">           
+          <mat-icon class="material-icons-outlined dummy-banner-icon">arrow_back_ios</mat-icon>         
+        </button>
+        <button mat-mini-fab NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">
+          <mat-icon class="material-icons-outlined dummy-banner-icon">arrow_forward_ios</mat-icon> 
+        </button>
+      
+        <ul class="myPoint" NguCarouselPoint>
+          <li *ngFor="let i of myCarousel.pointNumbers; let i = index" [class.active]="i==myCarousel.activePoint" (click)="myCarousel.moveTo(i)"></li>
+        </ul>
+      </ngu-carousel>
+    </div>
+    <div class="b-section">
+      <mat-grid-list cols="5">
+        <mat-grid-tile
+            *ngFor="let tile of tiles2"
+            [colspan]="tile.cols"
+            [rowspan]="tile.rows"
+            class="dummy-banner">
+            <div>
+              <mat-icon class="material-icons-outlined dummy-banner-icon">clear</mat-icon>
+            </div>    
+          {{tile.text}}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <div class="b-section">
+      <div class="row justify-content-center">
+        <span class="mat-headline">Название баннера</span>
+      </div>
+      <ngu-carousel #myCarousel1 [inputs]="carouselTileConfig" [dataSource]="carouselTileItems$ | async">
+        <ngu-tile *nguCarouselDef="let item; let i = index; let ani = animate" [@slider]="ani"> <!-- [@slider]="ani" PLease this animation to this tile to see animation. stackblitz have error with animations -->
+          <div class="tile dummy-banner" [style.background]="'height=80px;'">
+              <div>
+                <mat-icon class="material-icons-outlined dummy-banner-icon">clear</mat-icon>
+              </div>
+          </div>
+        </ngu-tile>
+      
+        <button mat-mini-fab NguCarouselPrev class="leftRs" [style.opacity]="myCarousel1.isFirst ? 0.5:1">           
+          <mat-icon class="material-icons-outlined dummy-banner-icon">arrow_back_ios</mat-icon>         
+        </button>
+        <button mat-mini-fab NguCarouselNext class="rightRs" [style.opacity]="myCarousel1.isLast ? 0.5:1">
+          <mat-icon class="material-icons-outlined dummy-banner-icon">arrow_forward_ios</mat-icon> 
+        </button>
+      
+        <ul class="myPoint" NguCarouselPoint>
+          <li *ngFor="let i of myCarousel1.pointNumbers; let i = index" [class.active]="i==myCarousel1.activePoint" (click)="myCarousel.moveTo(i)"></li>
+        </ul>
+      </ngu-carousel>
+    </div>
+  </div>
+</div>

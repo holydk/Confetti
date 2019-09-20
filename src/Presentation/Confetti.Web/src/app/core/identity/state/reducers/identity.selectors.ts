@@ -9,6 +9,6 @@ export const selectUser = createSelector(
 );
 
 export const selectIsLoggedIn = createSelector(
-    selectUser,
-    user => user != null && user.expired !== true,
+  selectUser,
+  user => user != null && user.expired !== true,
 );

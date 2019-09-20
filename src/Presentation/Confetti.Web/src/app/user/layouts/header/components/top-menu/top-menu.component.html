@@ -1,7 +1,0 @@
-
-<!-- [ngClass]="{'active': i == selectedCategoryId}" -->
-<div>
-    <a *ngFor="let category of topMenuModel?.categories; let i=index" [routerLink]="[ '/', category.route ]" routerLinkActive="active" >
-        {{ category.title }}
-    </a>
-</div>
