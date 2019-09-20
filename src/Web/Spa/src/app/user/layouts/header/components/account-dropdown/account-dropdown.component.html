@@ -1,0 +1,15 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon class="material-icons-outlined">account_circle</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <ng-container *ngIf="(isAuthenticated$ | async); else notAuthenticated">
+    <span class="unicorn-header">Привет, {{(user$ | async).profile.name}}</span>
+    <mat-icon class="material-icons-outlined">exit_to_app</mat-icon>
+  </ng-container>
+  <ng-template #notAuthenticated>
+    <button mat-menu-item (click)="login()">Войти</button>
+  </ng-template>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>Личный кабинет</button>
+  <button mat-menu-item>Мои заказы</button>
+</mat-menu>

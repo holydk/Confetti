@@ -1,0 +1,29 @@
+
+@import '~@angular/material/theming';
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
+
+$primary: mat-palette($mat-grey, 100, 500, 900);
+$accent:  mat-palette($mat-teal, 200, 50, 300);
+$theme: mat-light-theme($primary, $accent);
+// $primary: mat-palette($mat-indigo);
+// $accent:  mat-palette($mat-pink, A200, A100, A400);
+// $theme: mat-light-theme($primary, $accent);

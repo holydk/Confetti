@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "name": "confetti.identity.api",
+  "private": true,
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-terser": "^1.2.0",
+    "merge-stream": "^1.0.1",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "jquery-validation": "^1.19.1",
+    "jquery-validation-unobtrusive": "^3.2.11"
+  }
+}

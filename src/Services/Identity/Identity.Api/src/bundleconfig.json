@@ -1,0 +1,59 @@
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+      "inputFiles": [
+        "wwwroot/css/site.css"
+      ]
+  },
+  {
+    "outputFileName": "wwwroot/css/validation.min.css",
+      "inputFiles": [
+        "wwwroot/css/validation.css"
+      ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "inputFiles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css"
+      ],
+      "minify": {
+        "enabled": false
+      }
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "inputFiles": [
+        "node_modules/bootstrap/dist/js/bootstrap.min.js"
+      ],
+      "minify": {
+        "enabled": false
+      }
+  },
+  {
+    "outputFileName": "wwwroot/lib/jquery/dist/jquery.min.js",
+      "inputFiles": [
+        "node_modules/jquery/dist/jquery.min.js"
+      ],
+      "minify": {
+        "enabled": false
+      }
+  },
+  {
+    "outputFileName": "wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "inputFiles": [
+        "node_modules/jquery-validation/dist/jquery.validate.min.js"
+      ],
+      "minify": {
+        "enabled": false
+      }
+  },
+  {
+    "outputFileName": "wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js",
+      "inputFiles": [
+        "node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"
+      ],
+      "minify": {
+        "enabled": false
+      }
+  }
+]

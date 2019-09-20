@@ -1,0 +1,25 @@
+@import 'abstracts/mixins';
+@import 'abstracts/variables';
+
+$config: mat-typography-config();
+
+img {
+  width: 54px;
+}
+
+.footer-container {
+  padding: 25px;
+  color: mat-color($accent, default-contrast);
+  background-color: mat-color($primary, 200);
+}
+
+.footer-container-logo {
+  @extend .footer-container;
+  background-color: mat-color($primary, 300);
+}
+
+.footer-nav-link {
+  @include mat-typography-level-to-styles($config, body-1);
+  padding: 5px 0;
+  color: currentColor;
+}

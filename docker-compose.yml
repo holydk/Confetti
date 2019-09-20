@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+
+  identity.api:
+    image: ${REGISTRY}/identity.api:${PLATFORM}-${TAG}
+    build: 
+      context: .
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+        NODE_DOWNLOAD_URL: ${NODE_DOWNLOAD_URL}
+        NODE_DOWNLOAD_SHA: ${NODE_DOWNLOAD_SHA}
+      dockerfile: 
+        src/Services/Identity/Identity.Api/src/Dockerfile

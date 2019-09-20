@@ -1,0 +1,10 @@
+<nav class="header-row">
+  <a *ngFor="let category of categories" 
+    class="navbar-item-up" 
+    [ngClass]="{'navbar-item-active': rootCategoryLink.IsActive || (breadcrumbPath !== null && breadcrumbPath[0] === category.title)}" 
+    #rootCategoryLink="routerLinkActive"
+    routerLinkActive
+    [routerLink]="[ '/', category.route ]">
+    <div class="header-row align-items-center">{{category.title}}</div>
+  </a>
+</nav>

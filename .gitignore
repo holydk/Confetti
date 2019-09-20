@@ -7,9 +7,10 @@ nupkg/
 
 # Visual Studio Code
 .vscode
-
+Confetti.Identity/
+Migrations/
 # dependencies
-/node_modules
+node_modules/
 
 # User-specific files
 *.suo

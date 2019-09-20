@@ -1,0 +1,64 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+html, body, ul, ol, fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  max-width: map-get($container-max-widths, xl);
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media-breakpoint-up(lg) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.justify-content-center {
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+}
+
+.justify-content-end {
+  -ms-flex-pack: end !important;
+  justify-content: end !important;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.flex-fill {
+  -ms-flex: 1 1 auto!important;
+  flex: 1 1 auto!important;
+}
+
+.row {
+  @include make-row();
+}
+
+.col {
+  @include make-col();
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}

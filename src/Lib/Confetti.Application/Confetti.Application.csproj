@@ -1,9 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Confetti.Common\Confetti.Common.csproj"/>
-    <ProjectReference Include="..\Confetti.Domain\Confetti.Domain.csproj"/>
-  </ItemGroup>
-</Project>

@@ -1,0 +1,114 @@
+@import 'abstracts/variables';
+
+$config: mat-typography-config();
+
+a {
+  color: currentColor;
+}
+
+li {
+  &:not(:first-child)::before {
+    content: '>';
+    padding: 0 14px;
+  }
+}
+
+.br-container {
+  @include mat-typography-level-to-styles($config, caption);
+  color: mat-color($accent, default-contrast);
+  padding: 20px;
+}
+
+.b-category-container {
+  padding-top: 10px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: mat-color($primary, 300);
+  background-color: mat-color($primary, 100);
+}
+
+.b-category-title {
+  @include mat-typography-level-to-styles($config, title);
+  color: mat-color($accent, default-contrast);
+  font-weight: 600;
+}
+
+.b-category-description {
+  @include mat-typography-level-to-styles($config, caption);
+  color: mat-color($accent, default-contrast);
+  max-width: 600px;
+  text-align: center;
+}
+
+.b-category-container-sub {
+  padding: 8px 0;
+  background-color: mat-color($primary, 50);
+}
+
+.b-category-title-sub {
+  background-color: mat-color($accent, 50);
+}
+
+.cat-attrs-container {
+  background-color: mat-color($primary, 200);
+}
+
+.cat-attr {
+  margin: 5px 20px 0 0;
+}
+
+.mat-chip-selected {
+  background-color: mat-color($accent, lighter);
+}
+
+.mat-category-chip {
+  @include mat-typography-level-to-styles($config, body-1);
+  transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+  color: mat-color($accent, default-contrast);
+  display: inline-flex;
+  padding: 7px 12px;
+  border-radius: 16px;
+  align-items: center;
+  cursor: default;
+  min-height: 32px;
+  height: 1px;
+  margin: 4px;
+  letter-spacing: 0.3px;
+  &::after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    border-radius: inherit;
+    opacity: 0;
+    content: '';
+    pointer-events: none;
+    transition: opacity .2s cubic-bezier(.35,0,.25,1);
+  }
+}
+
+.dummy-banner {
+  background-color: mat-color($primary, 300);
+}
+
+.products-container {
+  padding: 25px 0;
+}
+
+.product-title {
+  color: mat-color($accent, default-contrast);
+  @include mat-typography-level-to-styles($config, caption);
+  padding: 10px 5px 0 0;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.product-price {
+  color: mat-color($accent, default-contrast);
+  @include mat-typography-level-to-styles($config, subheading-1);
+  padding-bottom: 10px;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}

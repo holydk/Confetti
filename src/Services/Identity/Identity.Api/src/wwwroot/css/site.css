@@ -1,0 +1,187 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a {
+  color: #80cbc4;
+}
+
+a:hover {
+  color: #6eaca5;
+}
+
+.btn-primary {
+  background-color: #80cbc4;
+  border-color: #80cbc4;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #6eaca5;
+  border-color: #6eaca5;
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.shadow-box {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.shadow-box_additionals {
+  margin-bottom: 16px;
+  padding: 15px 0;
+  text-align: center;
+}
+
+div.form-group label:not(.checkbox) {
+  color: #999;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+div.form-group > button {
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+
+fieldset :last-child {
+  margin-bottom: 0rem;
+}
+
+.panel {
+  max-width: 400px;
+}
+
+header {
+  padding: 1.5rem;
+}
+
+hr.hr-with-text {
+  padding: 0;
+  border: none;
+  border-top: 1px solid #eee;
+  text-align: center;
+  margin: 30px auto 0 auto;
+}
+
+p.hr-with-text {
+  display: inline-block;
+  position: relative;
+  top: -18px;
+  padding: 0 .5em;
+  background: #fff;
+  font-size: 1.2em;
+  margin: 0em;
+}
+
+.socials-buttons {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.socials-buttons__button {
+  width: 36px;
+  height: 36px;
+  background-color: #cecece;
+  border-radius: 3px;
+}
+
+.socials-buttons__button+.socials-buttons__button {
+  margin-left: 12px;
+}
+
+.socials-buttons__button_google:hover {
+  background-color:#DC4E41
+}
+
+.socials-buttons__button_vkontakte:hover {
+  background-color:#4178A9
+}
+
+.socials-buttons__button_instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.forgotten-password {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+@media (max-width: 575.98px) {
+  .shadow-box {
+    padding: 20px;
+  }
+  .nav-link {
+    padding: 0rem;
+  }
+  p.hr-with-text {
+    top: -14px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  p.hr-with-text {
+    top: -16px;
+  }
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  background: #f4f4f4;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
