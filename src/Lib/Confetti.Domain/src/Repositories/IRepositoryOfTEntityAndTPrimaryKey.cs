@@ -4,15 +4,16 @@ using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Confetti.Domain.Entities;
 
 namespace Confetti.Domain.Repositories
 {
     /// <summary>
-    /// This interface is implemented by all repositories to ensure implementation of fixed methods.
+    /// Provides an abstraction of the entity repository.
     /// </summary>
     /// <typeparam name="TEntity">Main Entity type this repository works on.</typeparam>
     /// <typeparam name="TPrimaryKey">Primary key type of the entity.</typeparam>
-    public interface IRepository<TEntity, TPrimaryKey>  where TEntity : class
+    public interface IRepository<TEntity, TPrimaryKey>  where TEntity : class, IEntity<TPrimaryKey>
     {
         #region Select/Get/Query
 
