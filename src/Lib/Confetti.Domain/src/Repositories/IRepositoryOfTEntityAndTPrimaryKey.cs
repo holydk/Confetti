@@ -31,19 +31,19 @@ namespace Confetti.Domain.Repositories
         IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors);
 
         /// <summary>
-        /// Gets an entity with given primary key.
-        /// </summary>
-        /// <param name="id">Primary key of the entity to get.</param>
-        /// <returns>The entity.</returns>
-        Task<TEntity> GetAsync(TPrimaryKey id);
-
-        /// <summary>
         /// Creates a LINQ query for the entity based on a raw SQL query.
         /// </summary>
         /// <param name="sql">The raw SQL query.</param>
         /// <param name="parameters">The values to be assigned to parameters.</param>
-        /// <returns></returns>
+        /// <returns>IQueryable to be used to select entities from database.</returns>
         Task<IQueryable<TEntity>> FromSqlAsync(string sql, params DbParameter[] parameters);
+
+        /// <summary>
+        /// Gets an entity with given primary key.
+        /// </summary>
+        /// <param name="id">Primary key of the entity to get.</param>
+        /// <returns>The entity.</returns>
+        Task<TEntity> GetByIdAsync(TPrimaryKey id);
 
         #endregion
 
@@ -54,13 +54,6 @@ namespace Confetti.Domain.Repositories
         /// </summary>
         /// <param name="entity">The entity.</param>
         Task InsertAsync(TEntity entity);
-
-        /// <summary>
-        /// Inserts a new entity and gets it's Id.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>Id of the entity.</returns>
-        Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity);
 
         /// <summary>
         /// Inserts a new entities.
@@ -76,7 +69,7 @@ namespace Confetti.Domain.Repositories
         /// Updates a existing entity. 
         /// </summary>
         /// <param name="entity">The entity.</param>
-        Task<TEntity> UpdateAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity);
 
         /// <summary>
         /// Updates a existing entities.
