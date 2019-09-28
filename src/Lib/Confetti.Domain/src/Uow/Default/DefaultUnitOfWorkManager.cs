@@ -1,4 +1,5 @@
 using System;
+using Confetti.Domain.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -7,22 +8,22 @@ namespace Confetti.Domain.Uow
     /// <summary>
     /// Provides a implementation of the unit of work manager.
     /// </summary>
-    public class UnitOfWorkManager : IUnitOfWorkManager
+    public class DefaultUnitOfWorkManager : IUnitOfWorkManager
     {
         #region Properties
 
-        protected UnitOfWorkOptions DefaultOptions { get; }
+        protected ConfettiDomainOptions Options { get; }
         protected IServiceProvider ServiceProvider { get; }
             
         #endregion
 
         #region Ctor
 
-        public UnitOfWorkManager(
-            IOptions<UnitOfWorkOptions> options,
+        public DefaultUnitOfWorkManager(
+            IOptions<ConfettiDomainOptions> options,
             IServiceProvider serviceProvider)
         {
-            DefaultOptions = options.Value;
+            Options = options.Value;
             ServiceProvider = serviceProvider;
         }
             
@@ -36,7 +37,7 @@ namespace Confetti.Domain.Uow
         /// <returns>The uow complete handle.</returns>
         public virtual IUnitOfWorkCompleteHandle Begin()
         {
-            return Begin(DefaultOptions);
+            return Begin(Options.DefaultUnitOfWorkOptions);
         }
         
         /// <summary>
