@@ -1,16 +1,16 @@
 using System.Data.Common;
 
-namespace Confetti.Data
+namespace Confetti.Data.Services
 {
     /// <summary>
-    /// Represents a data provider.
+    /// Represents an abstraction for handler of the data provider.
     /// </summary>
-    public partial interface IDataProvider
+    public interface IDataProviderHandler
     {
         #region Methods
         
         /// <summary>
-        /// Initialize database.
+        /// Initializes a database.
         /// </summary>
         void InitializeDatabase();
 
