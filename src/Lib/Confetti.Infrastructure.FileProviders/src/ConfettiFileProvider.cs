@@ -19,7 +19,7 @@ namespace Confetti.Infrastructure.FileProviders
         /// Initializes a new instance of a ConfettiFileProvider
         /// </summary>
         /// <param name="env">Hosting environment</param>
-        public ConfettiFileProvider(IHostingEnvironment env) 
+        public ConfettiFileProvider(IWebHostEnvironment env) 
             //: base(File.Exists(env.WebRootPath) ? Path.GetDirectoryName(env.WebRootPath) : env.WebRootPath)
             : base(env.ContentRootPath)
         {
