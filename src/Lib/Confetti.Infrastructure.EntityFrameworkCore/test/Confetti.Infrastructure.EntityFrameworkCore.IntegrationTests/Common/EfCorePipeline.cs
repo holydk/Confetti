@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.IO;
-using System.Threading;
-using Confetti.Domain.Repositories;
 using Confetti.Domain.Uow;
 using Confetti.Infrastructure.EntityFrameworkCore.IntegrationTests.Domain;
-using Confetti.Infrastructure.EntityFrameworkCore.Repositories;
-using Confetti.Infrastructure.EntityFrameworkCore.Uow;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +23,9 @@ namespace Confetti.Infrastructure.EntityFrameworkCore.IntegrationTests
             ServiceCollection = new ServiceCollection();
 
             var configuration = GetIConfigurationRoot(Directory.GetCurrentDirectory());
+
+            ServiceCollection.AddSingleton<IConfiguration>(configuration);
+
             var connectionString = configuration.GetConnectionString("Default");
 
             _connection = new SqliteConnection(connectionString);
@@ -36,26 +35,19 @@ namespace Confetti.Infrastructure.EntityFrameworkCore.IntegrationTests
                 options => options.UseSqlite(_connection)
             );
 
-            ServiceCollection.Configure<UnitOfWorkOptions>(options =>
-            {
-                options.IsTransactional = startupOptions?.IsTransactional ?? true;
-                options.IsolationLevel = startupOptions?.IsolationLevel;
-                options.Scope = startupOptions?.Scope;
-                options.Timeout = startupOptions?.Timeout;
-                options.AsyncFlowOption = startupOptions?.AsyncFlowOption;
-            });
-            
-            ServiceCollection.AddTransient<IDbContextProvider<BloggingDbContext>, DbContextProvider<BloggingDbContext>>();
-            ServiceCollection.AddTransient<IUnitOfWork, EfCoreUnitOfWork>();
-            ServiceCollection.AddTransient<IEfCoreTransactionStrategy, DbContextEfCoreTransactionStrategy>();
-            ServiceCollection.AddTransient<IRepository<Blog, int>, EfCoreRepository<BloggingDbContext, Blog, int>>();
-            ServiceCollection.AddTransient<IUnitOfWorkManager, UnitOfWorkManager>();
-            ServiceCollection.AddTransient<IConnectionStringResolver, DefaultConnectionStringResolver>();
-
-            ServiceCollection.AddScoped<IActiveDbContextsService, ActiveDbContextsService>();
-
-            ServiceCollection.AddSingleton<IConfiguration>(configuration);
-
+            ServiceCollection
+                .AddConfettiDomain(options => 
+                {
+                    options.DefaultUnitOfWorkOptions.IsTransactional = startupOptions?.IsTransactional ?? true;
+                    options.DefaultUnitOfWorkOptions.IsolationLevel = startupOptions?.IsolationLevel;
+                    options.DefaultUnitOfWorkOptions.Scope = startupOptions?.Scope;
+                    options.DefaultUnitOfWorkOptions.Timeout = startupOptions?.Timeout;
+                    options.DefaultUnitOfWorkOptions.AsyncFlowOption = startupOptions?.AsyncFlowOption;
+                })
+                .AddEntityFrameworkCore()
+                .AddDbContextProvider<BloggingDbContext>()
+                .AddEfCoreEntityRepository<BloggingDbContext, Blog, int>();
+                
             _scope = ServiceProvider.CreateScope();
 
             var bloggingDbContext = _scope.ServiceProvider.GetService<BloggingDbContext>();
