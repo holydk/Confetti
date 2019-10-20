@@ -1,0 +1,6 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=confettidb;Trusted_Connection=True;MultipleActiveResultSets=true"    
+  },
+  "MigrationsAssemblyName": "Identity.Infrastructure.Application"
+}

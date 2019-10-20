@@ -1,19 +1,12 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+using Confetti.Infrastructure.EntityFrameworkCore.SqlServer.Design;
 
 namespace Confetti.Identity.Infrastructure.Application.AspNetIdentity.Data
 {
     /// <summary>
-    /// Represents a factory to create the identity context.
+    /// Represents a factory to create <see cref="AppIdentityDbContext" />.
     /// </summary>
-    public class AppIdentityDbContextFactory : IDesignTimeDbContextFactory<AppIdentityDbContext>
+    public class AppIdentityDbContextFactory : SqlServerConfettiContextFactory<AppIdentityDbContext>
     {
-        public AppIdentityDbContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<AppIdentityDbContext>();
-            optionsBuilder.UseSqlServer("Server=.;Database=confettidb;Trusted_Connection=True;MultipleActiveResultSets=true");
 
-            return new AppIdentityDbContext(optionsBuilder.Options);
-        }
     }
 }

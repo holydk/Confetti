@@ -36,7 +36,7 @@ namespace Confetti.Infrastructure.EntityFrameworkCore.Design
         /// Creates the database context.
         /// </summary>
         /// <param name="args">The args.</param>
-        /// <returns>New instance of TContext.</returns>
+        /// <returns>New instance of <see cref="TContext" />.</returns>
         public virtual TContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
@@ -49,7 +49,7 @@ namespace Confetti.Infrastructure.EntityFrameworkCore.Design
 
             ConfigureDbContextOptions(configuration, optionsBuilder);
 
-            return (TContext)Activator.CreateInstance(typeof(TContext), optionsBuilder.Options);
+            return CreateDbContext(optionsBuilder);
         }
 
         /// <summary>
@@ -60,7 +60,17 @@ namespace Confetti.Infrastructure.EntityFrameworkCore.Design
         protected virtual void ConfigureDbContextOptions(IConfiguration configuration, DbContextOptionsBuilder<TContext> builder)
         {
             var mappingAssemblyName = configuration.GetValue<string>(MappingAssemblyFieldName, null);
-            builder.UseMappingAssembly(mappingAssemblyName ?? Assembly.GetEntryAssembly().FullName);
+            builder.UseMappingAssembly(mappingAssemblyName);
+        }
+
+        /// <summary>
+        /// Creates the database context.
+        /// </summary>
+        /// <param name="builder">The options builder.</param>
+        /// <returns>New instance of <see cref="TContext" />.</returns>
+        protected virtual TContext CreateDbContext(DbContextOptionsBuilder<TContext> builder)
+        {
+            return (TContext)Activator.CreateInstance(typeof(TContext), builder.Options);
         }
             
         #endregion
